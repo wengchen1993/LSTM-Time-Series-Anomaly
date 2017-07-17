@@ -94,7 +94,6 @@ def three_dim_one_hot_encode(sequence):
 
 def build_model(look_back, xshape, yshape, batch_size):
     # Building models
-
     encoding_dim = 30
     inputs = Input(shape=( xshape[1], xshape[2] ) )
     encoded = LSTM(units = 300)(inputs)
@@ -156,10 +155,11 @@ def save_weights_layout(model):
 
 
 if __name__ == "__main__":
+    print("Iterations run very long on CPU, 30 iterations last 7 hours but observable results, lowest iterations with noticeable difference might be 10")
     # Declare variables
     lag_steps = 120   # Using [(t-120), (t-119) ... (t-1)]
     bsize = 64      # standard batch size for every weight update
-    iterations = 3 # Number of epochs, usually in the range of 50 - 1000, making it 3 for testing purpose on CPU
+    iterations = 30 # Number of epochs, usually in the range of 50 - 1000, making it 3 for testing purpose on CPU
     forecast_steps = 10
     forecase_range = 5
 
